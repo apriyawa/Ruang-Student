@@ -1,0 +1,29 @@
+{
+  "name": "Ruang-Student",
+  "version": "1.0.0",
+  "description": "Pair Programming Aditya - Nabilla",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apriyawa/Ruang-Student.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apriyawa/Ruang-Student/issues"
+  },
+  "homepage": "https://github.com/apriyawa/Ruang-Student#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1",
+    "sequelize": "^6.12.5",
+    "sequelize-cli": "^6.3.0"
+  }
+}
