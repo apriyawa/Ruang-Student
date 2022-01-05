@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course</title>
+</head>
+<body>
+    <center>
+        <h1>Course List</h1>
+        <table border="1"> 
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Category</th>
+                <th>Action</th>
+            </tr>
+            <%  for(let i = 0; i < course.length; i++){  %>
+                <tr>
+                    <td> <%= course[i].id %> </td>
+                    <td> <%= course[i].name %> </td>
+                    <td> <%= course[i].description %> </td>
+                    <td> <%= course[i].duration %> </td>
+                    <td> <%= course[i].CategoryId %> </td>
+                    <td>
+                    </td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+    </center>
+</body>
+</html>
