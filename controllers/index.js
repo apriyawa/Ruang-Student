@@ -33,7 +33,7 @@ class Controller {
                     req.session.user = user.username
                     res.redirect('/')
                 } else {
-                    throw new Error ('username/password tidak sesuai')
+                    throw new Error ('error password')
                 }
             })
             .catch((err) => {
@@ -66,7 +66,6 @@ class Controller {
                 res.send(err)
             });
     }
-
 }
 
 module.exports = Controller
