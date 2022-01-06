@@ -1,13 +1,13 @@
 'use strict';
-const category = require('../categories.json')
+let Categories = require('../categories.json')
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Categories', category.map(el => {
-      el.createdAt = new Date()
-      el.updatedAt = new Date()
-
-      return el
-    }), {});
+    await queryInterface.bulkInsert('Categories', Categories.map(Category =>{
+      Category.createdAt = new Date()
+      Category.updatedAt = new Date()
+      return Category
+    }), {})
     /**
      * Add seed commands here.
      *
@@ -20,7 +20,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Categories', null, {});
     /**
      * Add commands to revert seed here.
      *

@@ -1,8 +1,8 @@
 const express = require(`express`)
 const app = express()
 const session = require('express-session')
-router = require(`./routes/`)
-const port = 3050
+router = require('../Ruang-Student/router/index')
+const port = 3000
 
 app.set(`view engine`, `ejs`)
 app.use(express.urlencoded({extended: true}))

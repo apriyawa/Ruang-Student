@@ -11,6 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Course.belongsTo(models.Category, {foreignKey: "CategoryId"})
+
+    }
+
+    static getCourse(data){
+      return Course.findAll({
+        where: {
+          id : data
+        }
+      })
     }
   };
   Course.init({

@@ -10,15 +10,12 @@
     <center>
         <%- include("components/navbar") %>
         <h1>Course List</h1>
-        <button><a href="/course/add">Add A New Course</a></button>
-        <br><br>
         <table border="1"> 
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Duration</th>
-                <th>Category</th>
                 <th>Action</th>
             </tr>
             <%  for(let i = 0; i < course.length; i++){  %>
@@ -27,10 +24,8 @@
                     <td> <%= course[i].name %> </td>
                     <td> <%= course[i].description %> </td>
                     <td> <%= course[i].duration %> </td>
-                    <td> <%= course[i].Category.name %> </td>
                     <td>
-                        <button><a href="/course/<%= course[i].id %>/delete">Delete</a></button>
-                        <button><a href="/course/<%= course[i].id %>/edit">Edit</a></button>
+                        <button><a href="/course/<%= course[i].id %>">Add</a></button>
                     </td>
                 </tr>
             <% } %>

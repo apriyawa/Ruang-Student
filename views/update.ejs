@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course - Edit</title>
+</head>
+<body>
+<%- include("components/navbar") %>
+<h1>Edit Course</h1>
+<hr>
+<% coursesNew %> 
+<form action='/course/<%= coursesNew[0].id %>/edit/' method='POST'>
+    <label>Name :</label><br>
+    <input type="text" value="<%= coursesNew[0].name %>"><br><br>
+    <label>Description :</label><br>
+    <input type="text" value="<%= coursesNew[0].description %>"><br><br>
+    <label>Duration :</label><br>
+    <input type="text" value="<%= coursesNew[0].duration %>"><br><br>
+    <label>Category :</label><br>
+    <select name="category" id="category" >
+    <option>-- Select Category --</option>
+    <option <%=  coursesNew[0].name  === "Business" ? "selected" : "" %> value="Business">Business</option>
+    <option <%=  coursesNew[0].name  === "IT & Software" ? "selected" : "" %> value="IT & Software">IT & Software</option>
+    <option <%=  coursesNew[0].name  === "Marketing" ? "selected" : "" %> value="Marketing">Marketing</option>
+    <option <%=  coursesNew[0].name  === "Music" ? "selected" : "" %> value="Music">Music</option>
+    <option <%=  coursesNew[0].name  === "Design" ? "selected" : "" %> value="Design">Design</option>
+    </select><br><br>
+    <input type="submit">
+</form>
+</body>
+</html>

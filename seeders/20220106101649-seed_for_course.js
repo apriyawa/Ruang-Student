@@ -1,13 +1,14 @@
 'use strict';
-let Categories = require('../categories.json')
+let Courses = require('../course.json')
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Categories', Categories.map(Category =>{
-      Category.createdAt = new Date()
-      Category.updatedAt = new Date()
-      return Category
+    await queryInterface.bulkInsert('Courses', Courses.map(Course =>{
+      Course.createdAt = new Date()
+      Course.updatedAt = new Date()
+      return Course
     }), {})
+
     /**
      * Add seed commands here.
      *
