@@ -1,0 +1,25 @@
+<%- include('partials/headerAdmin') %>
+<body>
+<h1 class="d-flex justify-content-center">Edit Course</h1>
+<hr>
+<% coursesNew %> 
+<form action='' method='POST'>
+    <label>Name :</label><br>
+    <input type="text" name= "name" value="<%= coursesNew[0].name %>"><br><br>
+    <label>Description :</label><br>
+    <input type="text" name= "description" value="<%= coursesNew[0].description %>"><br><br>
+    <label>Duration :</label><br>
+    <input type="text" name= "duration" value="<%= coursesNew[0].duration %>"><br><br>
+    <label>Category :</label><br>
+    <select name="CategoryId" >
+    <option>-- Select Category --</option>
+    <option name="CategoryId" value="Business" <%=  coursesNew[0].Category  === "Business" ? "selected" : "" %> >Business</option>
+    <option value="IT & Software" <%=  coursesNew[0].Category === "IT & Software" ? "selected" : "" %> >IT & Software</option>
+    <option  value="Marketing" <%=  coursesNew[0].Category  === "Marketing" ? "selected" : "" %> >Marketing</option>
+    <option value="Music"  <%=  coursesNew[0].Category  === "Music" ? "selected" : "" %> >Music</option>
+    <option value="Design" <%=  coursesNew[0].Category === "Design" ? "selected" : "" %> >Design</option>
+    </select><br><br>
+    <input type="submit">
+</form>
+</body>
+</html>

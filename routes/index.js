@@ -4,9 +4,9 @@ const Controller = require('../controllers/')
 
 const middleLoginForce = (req, res, next) => {
     if (req.session.user) {
-        res.redirect('/login')
-    } else {
         next()
+    } else {
+        res.redirect('/login')
     }
 }
 
@@ -18,15 +18,40 @@ const middleForceToHome = (req, res, next) => {
     }
 }
 
-
-
-router.get("/", middleLoginForce, Controller.home)
+//Login
 router.get("/login", middleForceToHome, Controller.loginForm)
 router.post("/login", Controller.loginPost )
-router.get("/logout", Controller.logout )
+
+//Register
 router.get("/register", Controller.registerForm )
 router.post("/register", Controller.registerPost )
-// router.get("/categories", Controller.viewAllCategories)
+
+//User
+router.get("/", middleLoginForce, Controller.home)
+router.get('/categories', (req, res)=> res.redirect("/"))
+router.get('/categories/:CategoryId', Controller.courseDetail)
+router.get('/course', Controller.getAllCourse)
+
+
+//Admin
+router.use("/admin", middleLoginForce, Controller.homeAdmin)
+router.get('/categoriesAdmin/:CategoryId', Controller.courseDetailAdmin)
+router.get('/course/add', Controller.addForm)
+router.post('/course/add', Controller.createForm)
+router.get('/course/:id/edit', Controller.updateForm)
+router.post('/course/:id/edit', Controller.update)
+router.get('/course/:id/delete', Controller.destroy)
+router.get('/courseAdmin', Controller.getAllCourseAdmin)
+
+
+router.get("/logout", Controller.logout )
+
+
+
+
+
+
+// router.get("/profile", Controller.myProfile)
 
 
 

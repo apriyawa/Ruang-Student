@@ -1,31 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>login bro</title>
-=======
-    <title>Document</title>
->>>>>>> 60ee029bd4c906b3d930217193ee61c0a9e3ebfe
-</head>
+
+<%- include('partials/headerLogin') %>
 <body>
+<br>
 
     <% if(error) %>
     <h3><%= error %></h3>
 
-    <form method="post">
-<<<<<<< HEAD
-        <input type="text" name="username" id="">
-        <input type="text" name="password" id="">
-=======
-        <input type="text" name="uname" id="">
-        <input type="text" name="upass" id="">
->>>>>>> 60ee029bd4c906b3d930217193ee61c0a9e3ebfe
+    <form class="d-flex justify-content-center" method="post">
+        <input type="text" name="username" placeholder= "tulis username lo disini" id="">
+        <input type="text" name="password" placeholder= "tulis password lo disini" id="">
         <button type="submit">Login</button>
     </form>
 
-    <a href="/">Back to Home</a>
+    <a class="d-flex justify-content-center">Belum punya akun?? Daftar dulu atuh bangg</a>
+    <a class="d-flex justify-content-center"  href="/register">Pencet ane untuk daptar</a>
 </body>
 </html>

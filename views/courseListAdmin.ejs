@@ -1,0 +1,27 @@
+<%- include('partials/headerAdmin') %>
+
+<body>
+    <center>
+        <h1>Course List</h1>
+        <table border="1"> 
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Duration</th>
+                <th>Action</th>
+            </tr>
+            <%  course.forEach(el => {  %>
+                <tr>
+                    <td> <%= el.name %> </td>
+                    <td> <%= el.description %> </td>
+                    <td> <%= el.duration %> </td>
+                    <td><a href="/course/<%= el.id %>/delete">Delete</a></td>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+        <button><a href="/course/add">Add</a></button>
+    </div>
+    </center>
+</body>
+</html>

@@ -1,4 +1,4 @@
-<%- include('partials/header') %>
+<%- include('partials/headerAdmin') %>
 
 <h1 class="d-flex justify-content-center"> Selamat datang wahai <%= username %> yang budiman!</h1>
 <br>
@@ -7,7 +7,7 @@
 <br>
 
 <center>
-    <h2>Pilih pelajaran yang kamu mau!</h1>
+    <h2>List Categori saat ini nih Min!</h1>
     <div class="container w-80">  
 <table class="table mb-10">
     <thead>
@@ -17,11 +17,11 @@
         <th scope="col">Action</th>
         </tr>
     </thead>
-    <%  category.forEach(el => { %>
+    <%  category.forEach(el => {  %>
             <tr>
                 <td> <%= el.id %> </td>
                 <td> <%= el.name %> </td>
-                <td><button><a href="/categories/<%= el.id %>">See Detail</a></button>
+                <td><button><a href="/categoriesAdmin/<%= el.id %>">See Detail</a></button>
                 </td>
             </tr>
         <% }) %>

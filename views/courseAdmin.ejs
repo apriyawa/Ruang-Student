@@ -1,33 +1,28 @@
-<%- include('partials/header') %>
-<div>
-    <form class="d-flex justify-content-center" method="GET">
-        <input type="search" name="name" placeholder="search course here..">
-        <input type="submit" value="Search Now!">
-    </form>
-</div>
+<%- include('partials/headerAdmin') %>
+
 <body>
     <center>
         <h1>Course List</h1>
         <table border="1"> 
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Duration</th>
                 <th>Category</th>
+                <th>Action</th>
             </tr>
             <%  course.forEach(el => {  %>
                 <tr>
-                    <td> <%= el.id %> </td>
                     <td> <%= el.name %> </td>
                     <td> <%= el.description %> </td>
                     <td> <%= el.formattedDuration %> </td>
-                    <td> <%= el.CategoryId %> </td>
+                    <td> <%= el.Category.name %> </td>
+                    <td><a href="/course/<%= el.id %>/delete">Delete</a><a href="/course/<%= el.id %>/edit">Edit</a></td>
                     </td>
                 </tr>
             <% }) %>
         </table>
-        <button><a href="/admin">Back to Home</a></button>
+        <button><a href="/course/add">Add</a></button>
     </div>
     </center>
 </body>
