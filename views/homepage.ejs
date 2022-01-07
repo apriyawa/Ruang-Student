@@ -17,15 +17,14 @@
         <th scope="col">Action</th>
         </tr>
     </thead>
-        <%  for(let i = 0; i < category.length; i++){  %>
+    <%  category.forEach(el => { %>
             <tr>
-                <td> <%= category[i].id %> </td>
-                <td> <%= category[i].name %> </td>
-                <td>
-                <button><a href="/categories/<%= category[i].id %>">See Detail</a></button>
+                <td> <%= el.id %> </td>
+                <td> <%= el.name %> </td>
+                <td><button><a href="/categories/<%= el.id %>">See Detail</a></button>
                 </td>
             </tr>
-        <% } %>
+        <% }) %>
     </table>
 </div>
 </center>

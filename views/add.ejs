@@ -13,9 +13,9 @@
     <label>Category :</label><br>
     <select name="CategoryId">
     <option>-- Select Category --</option>
-    <% for (let i = 0; i < course.length; i++){ %> 
-        <option name="CategoryId" value="<%= course[i].id %>"><%= course[i].name %></option>
-    <% } %> 
+    <%  course.forEach(el => {  %>
+        <option name="CategoryId" value="<%= el.id %>"><%= el.name %></option>
+    <% }) %> 
     </select><br><br>
     <input type="submit">
 </form>

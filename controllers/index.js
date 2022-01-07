@@ -1,6 +1,7 @@
 const {Course, Category, User} = require('../models')
 const { comparePassword } = require('../helpers/bcrypt')
 var nodemailer = require('nodemailer');
+const {Op} = require('sequelize')
 
 class Controller {
 
@@ -9,7 +10,7 @@ class Controller {
         // console.log(req.body);
         Category.findByPk(+req.params.CategoryId)
             .then((category) => {
-                Course.findAll({ 
+                return Course.findAll({ 
                     where : {
                         CategoryId: +req.params.CategoryId
                     },
@@ -30,8 +31,8 @@ class Controller {
         // console.log(req.params.CategoryId);
         // console.log(req.body);
         Category.findByPk(+req.params.CategoryId)
-            .then((category) => {
-                Course.findAll({ 
+            .then(() => {
+                return Course.findAll({ 
                     where : {
                         CategoryId: +req.params.CategoryId
                     },
@@ -39,19 +40,25 @@ class Controller {
                         ["id", "ASC"]
                     ]
                 })
-                .then((course) => {
-                    res.render("courseListAdmin", {course: course});
-                })
-                .catch((err) => {
-                    res.send(err.message)
-                })
             })
-    }
-
+            .then((course) => {
+                res.render("courseListAdmin", {course: course});
+            })
+            .catch((err) => {
+                res.send(err.message)
+            })
+        }
+        
 
     static getAllCourse(req, res){
+        let searchName = req.query.name || ""
         Course.findAll({
             include: [Category],
+            where: {
+                name: {
+                [Op.iLike]: `%${searchName || ""}%`
+                }
+            },
             order: [
                 ["id", "ASC"]
             ]
@@ -64,6 +71,26 @@ class Controller {
         })
     }
 
+    static getAllCourseAdmin(req, res){
+        let searchName = req.query.name || ""
+        Course.findAll({
+            include: [Category],
+            where: {
+                name: {
+                [Op.iLike]: `%${searchName || ""}%`
+                }
+            },
+            order: [
+                ["id", "ASC"]
+            ]
+        })
+        .then(course => {
+            res.render('courseAdmin', {course})
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
     
     static addForm(req, res){
         Category.findAll()
@@ -84,7 +111,7 @@ class Controller {
             CategoryId: +req.body.CategoryId
         })
         .then(result => {
-            res.redirect("/course")
+            res.redirect("/courseAdmin")
         })
         .catch(err => {
             res.send(err)
@@ -99,7 +126,7 @@ class Controller {
             }
         })
         .then(() => {
-            res.redirect('/course')
+            res.redirect('/courseAdmin')
         })
         .catch(err => {
             res.send(err)
@@ -110,7 +137,7 @@ class Controller {
         // console.log(req.body);
         Course.getCourse(+req.params.id)
             .then((coursesNew) => {
-                res.render('update', {coursesNew});
+                res.render('editCourse', {coursesNew: coursesNew});
             }).catch((err) => {
                 res.send(err)
             });
@@ -129,11 +156,11 @@ class Controller {
             }
         })
         .then(() => {
-            res.redirect('/course')
+            res.redirect('/courseAdmin')
         })
         .catch(err => {
             res.send(err)
-            // console.log(err);
+            console.log(err);
         })
     }
 

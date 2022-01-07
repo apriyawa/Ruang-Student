@@ -1,25 +1,24 @@
-<%- include('partials/header') %>
+<%- include('partials/headerAdmin') %>
+
 <body>
     <center>
         <h1>Course List</h1>
         <table border="1"> 
             <tr>
-                <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Duration</th>
                 <th>Action</th>
             </tr>
-            <%  for(let i = 0; i < course.length; i++){  %>
+            <%  course.forEach(el => {  %>
                 <tr>
-                    <td> <%= course[i].id %> </td>
-                    <td> <%= course[i].name %> </td>
-                    <td> <%= course[i].description %> </td>
-                    <td> <%= course[i].duration %> </td>
-                    <td><a href="/course/<%= course[i].id %>/delete">Delete</a></td>
+                    <td> <%= el.name %> </td>
+                    <td> <%= el.description %> </td>
+                    <td> <%= el.duration %> </td>
+                    <td><a href="/course/<%= el.id %>/delete">Delete</a></td>
                     </td>
                 </tr>
-            <% } %>
+            <% }) %>
         </table>
         <button><a href="/course/add">Add</a></button>
     </div>

@@ -1,4 +1,4 @@
-<%- include('partials/header') %>
+<%- include('partials/headerAdmin') %>
 
 <body>
     <center>
@@ -8,6 +8,7 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Duration</th>
+                <th>Category</th>
                 <th>Action</th>
             </tr>
             <%  course.forEach(el => {  %>
@@ -15,11 +16,13 @@
                     <td> <%= el.name %> </td>
                     <td> <%= el.description %> </td>
                     <td> <%= el.formattedDuration %> </td>
-                    <td>  <button><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Watch Course</a></button>
+                    <td> <%= el.Category.name %> </td>
+                    <td><a href="/course/<%= el.id %>/delete">Delete</a><a href="/course/<%= el.id %>/edit">Edit</a></td>
                     </td>
                 </tr>
             <% }) %>
         </table>
+        <button><a href="/course/add">Add</a></button>
     </div>
     </center>
 </body>
