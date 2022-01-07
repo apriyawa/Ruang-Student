@@ -1,5 +1,5 @@
 'use strict';
-// const { hashingPassword } = require('../helpers/bcrypt')
+const { hashingPassword } = require('../helpers/bcrypt')
 const {
   Model
 } = require('sequelize');
@@ -15,19 +15,48 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
-    username: DataTypes.STRING,
-    email: DataTypes.STRING,
+    username:{
+    type: DataTypes.STRING,
+    validate:{
+      isUniqueUsername: function(newUserName){
+        return User.findOne({
+          where:{
+            username: newUserName
+          }
+        }).then(function(user){
+          if(user){
+            throw(`Username sudah dipakai`)
+          }
+        })
+      }
+    }
+  },
+    email:{
+      type: DataTypes.STRING,
+      validate:{
+        isUniqueEmail: function(newEmail){
+          return User.findOne({
+            where:{
+              email: newEmail
+            }
+          }).then(function(user){
+            if(user){
+              throw(`Email sudah dipakai`)
+            }
+          })
+        }
+      }
+    },
     password: DataTypes.STRING,
     role: DataTypes.STRING
   },
   // , 
-  // {
-  //   hooks: {
-  //     beforeCreate(user) {
-  //       user.upass = hashingPassword(user.upass)
-  //     }
-  //   },
   {
+    hooks: {
+      beforeCreate(user) {
+        user.password = hashingPassword(user.password)
+      }
+    },
     sequelize,
     modelName: 'User',
   });

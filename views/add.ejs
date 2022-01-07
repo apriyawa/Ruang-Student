@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+<body>
+
+<h1>Add New Course</h1>
+<hr>
+<form action="/course/add" method="POST" id="form-add">
+    <label>Name :</label><br>
+    <input type="text" name="name"><br><br>
+    <label>Description :</label><br>
+    <input type="text" name="description"><br><br>
+    <label>Duration :</label><br>
+    <input type="text" name="duration"><br><br>
+    <label>Category :</label><br>
+    <select name="CategoryId">
+    <option>-- Select Category --</option>
+    <% for (let i = 0; i < course.length; i++){ %> 
+        <option name="CategoryId" value="<%= course[i].id %>"><%= course[i].name %></option>
+    <% } %> 
+    </select><br><br>
+    <input type="submit">
+</form>
+</body>
+</html>
